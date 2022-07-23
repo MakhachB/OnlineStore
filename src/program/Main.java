@@ -1,11 +1,16 @@
 package program;
 
+import connection.InitDB;
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+public final class Main {
 
-    static final BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
+    public static final String EXIT_COMMAND = "exit";
+
+    private static final BufferedReader CONSOLE_READER = new BufferedReader(new InputStreamReader(System.in));
 
     //  --------------------- Db initialize --------------------------
     static {
@@ -13,14 +18,35 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        printGreetings();
+        GreetPerson.printGreetings();
 
     }
 
-    private static void printGreetings() {
-        System.out.println("Welcome to our app!");
-        System.out.println("To exit app print 'exit'");
-        System.out.println("To continue answer the question:");
-        System.out.println("You're client (1) or employee (2) ?");
+    public static String getInputString() {
+        try {
+            String input = CONSOLE_READER.readLine();
+            if (input.equals(EXIT_COMMAND)){
+                System.out.println("Завершение работы...");
+                System.exit(-1);
+            }
+            return input;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    public static int getInputInt() {
+        try {
+            String input = CONSOLE_READER.readLine();
+            if (input.equals(EXIT_COMMAND)){
+                System.out.println("Shutdown...");
+                System.exit(-1);
+            }
+            return Integer.parseInt(input);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

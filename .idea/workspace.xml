@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcdde6c4-9593-4cdd-9671-801e5c57aae5" name="Changes" comment="start project">
-      <change afterPath="$PROJECT_DIR$/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/connection/InitDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/connection/exceptions/DatabaseDDLException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/connection/exceptions/DatabaseDMLException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/properties/PropertiesUtil.java" afterDir="false" />
+    <list default="true" id="fcdde6c4-9593-4cdd-9671-801e5c57aae5" name="Changes" comment="creating databases">
+      <change afterPath="$PROJECT_DIR$/src/person/AbstractPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/person/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/person/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/program/GreetPerson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/AbstractPersonActive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/MainView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/clientView/ClientActive.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/employeeView/EmployeeActive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConsoleClient-Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConsoleClient-Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connection/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connection/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/connection/InitDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connection/InitDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/program/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/program/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/properties/PropertiesUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connection/properties/PropertiesUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -37,23 +43,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/Downloads/postgresql-42.4.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last.edited.regexp": "",
+    "last_opened_file_path": "C:/Users/HP/Downloads/postgresql-42.4.0.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "File.Encoding"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="program.Main" />
@@ -90,7 +98,8 @@
       <workItem from="1658494031398" duration="74000" />
       <workItem from="1658494155777" duration="517000" />
       <workItem from="1658494730752" duration="5584000" />
-      <workItem from="1658500377380" duration="767000" />
+      <workItem from="1658500377380" duration="8288000" />
+      <workItem from="1658580174232" duration="9718000" />
     </task>
     <task id="LOCAL-00001" summary="start project">
       <created>1658488429884</created>
@@ -99,7 +108,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658488429884</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="creating databases">
+      <created>1658501201814</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658501201814</updated>
+    </task>
+    <task id="LOCAL-00003" summary="creating databases">
+      <created>1658501386900</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658501386900</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +171,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start project" />
-    <option name="LAST_COMMIT_MESSAGE" value="start project" />
+    <MESSAGE value="creating databases" />
+    <option name="LAST_COMMIT_MESSAGE" value="creating databases" />
   </component>
 </project>

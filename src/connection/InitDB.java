@@ -2,7 +2,7 @@ package connection;
 
 import connection.exceptions.DatabaseDDLException;
 import connection.exceptions.DatabaseDMLException;
-import properties.PropertiesUtil;
+import connection.properties.PropertiesUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,9 +11,9 @@ import java.sql.Statement;
 
 public final class InitDB {
 
-    public static final String URL_KEY = "db.url";
-    public static final String USERNAME_KEY = "db.username";
-    public static final String PASSWORD_KEY = "db.password";
+    private static final String URL_KEY = "db.url";
+    private static final String USERNAME_KEY = "db.username";
+    private static final String PASSWORD_KEY = "db.password";
 
     static {
         loadDriver();
@@ -53,10 +53,11 @@ public final class InitDB {
                     "client_id serial PRIMARY KEY," +
                     "last_name varchar(32) NOT NULL, " +
                     "first_name varchar(32) NOT NULL," +
-                    "phone varchar(16) UNIQUE ," +
+                    "phone varchar(16) UNIQUE NOT NULL ," +
                     "email varchar(64) UNIQUE ," +
                     "country varchar(32) NOT NULL, " +
-                    "city varchar(64) NOT NULL," +
+                    "city varchar(64) NOT NULL, " +
+                    "password varchar(32) NOT NULL," +
                     "CONSTRAINT CHK_phone_email CHECK (phone IS NOT NULL OR email IS NOT NULL)" +
                     ")");
 
@@ -68,7 +69,8 @@ public final class InitDB {
                     "phone varchar(16) NOT NULL UNIQUE , " +
                     "email varchar(64) NOT NULL UNIQUE , " +
                     "country varchar(32) NOT NULL, " +
-                    "city varchar(64)" +
+                    "city varchar(64)," +
+                    "password varchar(32) NOT NULL " +
                     ")");
 
             statement.addBatch("CREATE TABLE IF NOT EXISTS products(" +
@@ -109,19 +111,21 @@ public final class InitDB {
              Statement statement = connection.createStatement()) {
 
             connection.setAutoCommit(false);
-            statement.addBatch("INSERT INTO clients (last_name, first_name, phone, email, country, city) " +
+
+            statement.addBatch("INSERT INTO clients (last_name, first_name, phone, email, country, city, password) " +
                     "VALUES " +
-                    "('Cristiano', 'Ronaldo', '+83492432943', null, 'Portugal', 'Lisbon')," +
-                    "('Lionel', 'Messi', null, 'messi@gmail.com','Argentina', 'Buenos Aires')," +
-                    "('Abakarov', 'Hizri', '+4342424242', 'hizriii@gmail.com', 'Russia', 'Babayrt')"
+                    "('Cristiano', 'Ronaldo', '+83492432943', null, 'Portugal', 'Lisbon', '3242')," +
+                    "('Lionel', 'Messi', '+2345', 'messi@gmail.com','Argentina', 'Buenos Aires', '4453')," +
+                    "('Abakarov', 'Hizri', '+4342424242', 'hizriii@gmail.com', 'Russia', 'Babayrt', '4782')"
             );
 
-            statement.addBatch("INSERT INTO employees (last_name, first_name, title, phone, email, country, city) " +
+            statement.addBatch("INSERT INTO employees (last_name, first_name, title, phone, email, country, city, password) " +
                     "VALUES " +
-                    "('Andrew', 'Johns', 'Sales Manager', '+28582393', 'end@mail.com', 'USA', 'New-york')," +
-                    "('Evelin', 'Rodriguez', 'Programmer', '+432424234', 'eve@email.com', 'Canada', 'Ottawa')," +
-                    "('Mike', 'Endy', 'Sales Representative', '+432424421', 'mike@aaa.com', 'Russia','Kizlyar')," +
-                    "('Michael', 'Jackson', 'Sales Representative', '+8959399593', 'michael@mail.com', 'USA', 'Los-Angeles')");
+                    "('Andrew', 'Johns', 'Sales Manager', '+28582393', 'end@mail.com', 'USA', 'New-york', '8585')," +
+                    "('Evelin', 'Rodriguez', 'Programmer', '+432424234', 'eve@email.com', 'Canada', 'Ottawa', '8483')," +
+                    "('Mike', 'Endy', 'Sales Representative', '+432424421', 'mike@aaa.com', 'Russia','Kizlyar', '8858')," +
+                    "('Michael', 'Jackson', 'Sales Representative', '+8959399593', 'michael@mail.com', 'USA', 'Los-Angeles', '1234')");
+
             statement.addBatch("INSERT INTO products (product_name, units_in_stock, unit_price) " +
                     "VALUES " +
                     "('Samsung TV 2022', 23, 74234.234)," +
