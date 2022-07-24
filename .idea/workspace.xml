@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fcdde6c4-9593-4cdd-9671-801e5c57aae5" name="Changes" comment="Make registration end sign in for clients and employees">
-      <change afterPath="$PROJECT_DIR$/src/product/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/productsView/ProductsActive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/connection/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connection/ConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/connection/InitDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/connection/InitDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/person/AbstractPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/AbstractPerson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/person/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/person/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/person/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/program/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/program/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/clientView/ClientActive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/clientView/ClientActive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/employeeView/EmployeeActive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/employeeView/EmployeeActive.java" afterDir="false" />
-    </list>
+    <list default="true" id="fcdde6c4-9593-4cdd-9671-801e5c57aae5" name="Changes" comment="Make main logic of Clients and Employees" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,7 +87,7 @@
       <workItem from="1658500377380" duration="8288000" />
       <workItem from="1658580174232" duration="10245000" />
       <workItem from="1658606578481" duration="442000" />
-      <workItem from="1658651036156" duration="13438000" />
+      <workItem from="1658651036156" duration="13739000" />
     </task>
     <task id="LOCAL-00001" summary="start project">
       <created>1658488429884</created>
@@ -129,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658592519804</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Make main logic of Clients and Employees">
+      <created>1658668594306</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658668594306</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +175,7 @@
     <MESSAGE value="start project" />
     <MESSAGE value="creating databases" />
     <MESSAGE value="Make registration end sign in for clients and employees" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make registration end sign in for clients and employees" />
+    <MESSAGE value="Make main logic of Clients and Employees" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make main logic of Clients and Employees" />
   </component>
 </project>
