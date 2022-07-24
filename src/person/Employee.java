@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Employee extends AbstractPerson{
     private String title;
 
-    public Employee(String last_name, String first_name, String phone, String email, String country, String city, String password, String title) {
-        super(last_name, first_name, phone, email, country, city, password);
+    public Employee(int id, String last_name, String first_name, String phone, String email, String country, String city, String password, String title) {
+        super(id, last_name, first_name, phone, email, country, city, password);
         this.title = title;
     }
 

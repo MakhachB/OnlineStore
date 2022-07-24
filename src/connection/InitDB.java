@@ -54,7 +54,7 @@ public final class InitDB {
                     "last_name varchar(32) NOT NULL, " +
                     "first_name varchar(32) NOT NULL," +
                     "phone varchar(16) UNIQUE NOT NULL ," +
-                    "email varchar(64) UNIQUE ," +
+                    "email varchar(64) UNIQUE NOT NULL ," +
                     "country varchar(32) NOT NULL, " +
                     "city varchar(64) NOT NULL, " +
                     "password varchar(32) NOT NULL," +
@@ -114,7 +114,7 @@ public final class InitDB {
 
             statement.addBatch("INSERT INTO clients (last_name, first_name, phone, email, country, city, password) " +
                     "VALUES " +
-                    "('Cristiano', 'Ronaldo', '+83492432943', null, 'Portugal', 'Lisbon', '3242')," +
+                    "('Cristiano', 'Ronaldo', '+83492432943', 'ron@mail.com', 'Portugal', 'Lisbon', '3242')," +
                     "('Lionel', 'Messi', '+2345', 'messi@gmail.com','Argentina', 'Buenos Aires', '4453')," +
                     "('Abakarov', 'Hizri', '+4342424242', 'hizriii@gmail.com', 'Russia', 'Babayrt', '4782')"
             );

@@ -2,16 +2,16 @@ package view.clientView;
 
 import connection.ConnectionManager;
 import person.Client;
+import product.Product;
 import program.Main;
 import view.MainView;
+import view.productsView.ProductsActive;
 
-import java.util.Arrays;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ClientActive {
 
-    static Client activeClient;
+    public static Client activeClient;
 
     public static void initClient() {
         System.out.println("Sign in (1) / Register (2) ?");
@@ -35,7 +35,7 @@ public class ClientActive {
 
             if (MainView.signClient(clientPhone, clientPass)) {
                 activeClient = (Client) MainView.activePerson;
-                System.out.printf("Welcome back %s %s!",
+                System.out.printf("Welcome back %s %s!\n",
                         activeClient.getLast_name(),
                         activeClient.getFirst_name());
                 choiceActive();
@@ -50,7 +50,7 @@ public class ClientActive {
         System.out.println("To register please follow the instruction:");
         System.out.println("1/6 Enter your first and last name (like 'Andrew Johns')");
         String[] full_name = Main.getInputString().split("\\s+");
-        if (full_name.length != 2) {
+        if (full_name.length != 2 || !full_name[0].matches("^[\\p{Alpha}\\s]+$")) {
             System.out.println("Please enter your correct name (Lastname FirstName)");
             registerClient();
             return;
@@ -65,7 +65,7 @@ public class ClientActive {
         System.out.println("3/6 (Unnecessary) Enter your email (example@mail.com)");
         System.out.println("Or skip ('none')");
         String email = Main.getInputString();
-        if (email.equals("none"))  email = null;
+        if (email.equals("none")) email = "unknown-" + phone;
         else if (!email.matches("^.+@.+\\..+$")) {
             System.out.println("Please enter correct email.");
             registerClient();
@@ -81,6 +81,7 @@ public class ClientActive {
             Locale obj = new Locale("", countryCode);
 //            System.out.println("Country Code = " + obj.getCountry()
 //                    + ", Country Name = " + obj.getDisplayCountry(Locale.ENGLISH));
+
             if (country.equals(obj.getDisplayCountry(Locale.ENGLISH))) isExists = true;
         }
 
@@ -103,25 +104,96 @@ public class ClientActive {
             registerClient();
             return;
         }
-        Client client = new Client(full_name[0], full_name[1], phone, email, country, city, password);
         int res = ConnectionManager.regClient(full_name[0], full_name[1], phone, email, country, city, password);
         if (res == -2) {
             System.out.println("Person with this phone / email is exists");
             System.out.println("If you had account - sign in (1) or exit (exit)");
             if (Main.getInputInt() == 1) signClient();
-        }
-        else if (res != 1) {
+        } else if (res != 1) {
             System.out.println("Sorry, database is not working");
             System.out.println("Try later...");
         } else {
-            MainView.activePerson = client;
-            activeClient = client;
+            MainView.activePerson = activeClient;
             System.out.println("Welcome to our app!");
             choiceActive();
         }
     }
 
     private static void choiceActive() {
+        System.out.println("Choice action (Type required number)");
+        System.out.println("(1)Print my info");
+        System.out.println("(2)Make an order");
+
+        int choice = Main.getInputInt();
+        if (choice == 1) printClientInfo();
+        else if (choice == 2) makeOrder();
+        else {
+            System.out.println("Input '1' or '2'");
+            choiceActive();
+        }
+    }
+
+    private static void printClientInfo() {
+        System.out.println("==========================================");
+        System.out.printf("Full name: %s %s\nPhone: %s\nEmail: %s\nCountry: %s\nCity: %s\n",
+                activeClient.getLast_name(),
+                activeClient.getFirst_name(),
+                activeClient.getPhone(),
+                activeClient.getEmail().startsWith("unknown-") ? "none" : activeClient.getEmail(),
+                activeClient.getCountry(),
+                activeClient.getCity());
+        System.out.println("==========================================");
+        choiceActive();
+    }
+
+    private static void makeOrder() {
+        System.out.println("Choice product to buy (print number)");
+        ProductsActive.printProductsInfo();
+        int id = Main.getInputInt();
+        if (ProductsActive.getProductById(id) == null) {
+            System.out.println("Theres no products with this id. Retry");
+            makeOrder();
+        } else {
+            selectCount(ProductsActive.getProductById(id));
+        }
+
+    }
+
+    private static void selectCount(Product product) {
+        System.out.println("Print count of products");
+        int count = Main.getInputInt();
+        if (count > product.getUnits_in_stock()) {
+            System.out.println("We don't have this count of products. Retry");
+            makeOrder();
+        } else {
+            askAgreement(product, count);
+        }
+    }
+
+    private static void askAgreement(Product product, int count) {
+        System.out.printf("Do you agree to buy %d goods of %s with a price of %.2f$\n",
+                count, product.getProduct_name(), product.getUnit_price() * count);
+        System.out.println("Yes (1) / No (0)");
+        int answer = Main.getInputInt();
+        if (answer == 0) {
+            System.out.println("Deal canceled.");
+            choiceActive();
+        } else if (answer == 1) {
+            buyProductInDB(product, count);
+        } else {
+            System.out.println("Print '1' or '0'");
+            askAgreement(product, count);
+        }
+    }
+
+    private static void buyProductInDB(Product active, int count) {
+        if (ConnectionManager.buyProduct(active, count)) {
+            System.out.println("Congrats on your purchase, good luck!");
+            System.out.println("Print 'exit' to exit app");
+            choiceActive();
+        } else {
+            System.out.println("Error in our database. Sorry try later");
+        }
     }
 
 

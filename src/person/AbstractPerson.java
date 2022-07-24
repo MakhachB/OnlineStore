@@ -3,15 +3,20 @@ package person;
 import java.util.Objects;
 
 public abstract class AbstractPerson {
+
+    protected int id;
+
     protected String last_name;
+
     protected String first_name;
+
     protected String phone;
     protected String email;
     protected String country;
     protected String city;
     protected String password;
-
-    public AbstractPerson(String last_name, String first_name, String phone, String email, String country, String city, String password) {
+    public AbstractPerson(int id, String last_name, String first_name, String phone, String email, String country, String city, String password) {
+        this.id = id;
         this.last_name = last_name;
         this.first_name = first_name;
         this.phone = phone;
@@ -20,7 +25,6 @@ public abstract class AbstractPerson {
         this.city = city;
         this.password = password;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,6 +54,14 @@ public abstract class AbstractPerson {
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", password='" + password + '\'';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLast_name() {
