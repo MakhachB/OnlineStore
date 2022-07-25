@@ -12,7 +12,7 @@ public class Employee extends AbstractPerson{
 
     @Override
     public int hashCode() {
-        return Objects.hash(last_name, first_name, phone, email, country, city, password, title);
+        return super.hasCode();
     }
 
     @Override
