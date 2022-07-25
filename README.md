@@ -1,5 +1,5 @@
 # OnlineStore
-Test app
+Test console app
 
 Imitation_store_operation
 
